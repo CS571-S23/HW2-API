@@ -92,7 +92,7 @@ app.use(rateLimit({
 // Endpoints Go Here!
 app.get('/api/test', (req, res) => {
     res.status(200).send({
-        msg: "Success!!!"
+        secretCode: 12345
     });
 });
 

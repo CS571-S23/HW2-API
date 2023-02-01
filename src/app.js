@@ -10,8 +10,8 @@ import { readFileSync } from 'fs';
 const app = express();
 const port = 25402;
 
-const COLE_LOCAL = false;
-const FS_XID_ASSOCIATIONS = COLE_LOCAL ? "C:/Users/ColeNelson/Desktop/cs571-s23/hws/apis/hw2/secret-generation/ref-codes.secret" : "/secrets/ref-codes.secret";
+const COLE_LOCAL = true;
+const FS_XID_ASSOCIATIONS = COLE_LOCAL ? "C:/Users/ColeNelson/Desktop/cs571-s23/hws/apis/hw2-api/secret-generation/ref-codes.secret" : "/secrets/ref-codes.secret";
 
 const XID_ASSOCIATIONS = Object.fromEntries(readFileSync(FS_XID_ASSOCIATIONS)
     .toString().split(/\r?\n/g).map(assoc => {
@@ -25,6 +25,8 @@ const XIDS = Object.keys(XID_ASSOCIATIONS);
 // LOGGING
 app.use(morgan((tokens, req, res) => {
     return [
+        tokens.date(),
+        tokens['remote-addr'](req, res),
         tokens.method(req, res),
         tokens.url(req, res),
         tokens.status(req, res),

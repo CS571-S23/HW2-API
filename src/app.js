@@ -10,7 +10,7 @@ import { readFileSync } from 'fs';
 const app = express();
 const port = 25402;
 
-const COLE_LOCAL = true;
+const COLE_LOCAL = false;
 const FS_XID_ASSOCIATIONS = COLE_LOCAL ? "C:/Users/ColeNelson/Desktop/cs571-s23/hws/apis/hw2-api/secret-generation/ref-codes.secret" : "/secrets/ref-codes.secret";
 
 const XID_ASSOCIATIONS = Object.fromEntries(readFileSync(FS_XID_ASSOCIATIONS)
